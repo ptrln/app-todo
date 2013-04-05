@@ -1,0 +1,15 @@
+<%= breadcrumb_helper([["Teams", nil]]) %>
+<legend>
+  <h1>
+    Teams
+    <small>
+      <%= link_to("Create new team", new_team_path) %>
+    </small>
+  </h1>
+</legend>
+<% @teams.each do |team| %>
+<p>
+<%= link_to(team.name, team_path(team)) %>
+</p>
+<% end %>
+

@@ -1,0 +1,62 @@
+<%= breadcrumb_helper([["Projects", projects_path], [@project.title, nil]]) %>
+<legend>
+  <h1>
+    Project: <%= @project.title %>
+    <%= complete_label(@project.completed?) %>
+    <small>
+      <%= link_to("Edit", edit_project_path(@project))%>
+    </small>
+  </h1>
+
+  <small class='pull-right'><%= link_to(@project.team.name, team_path(@project.team)) %></small>
+</legend>
+<h3>
+  <%= link_to("Items", project_items_path(@project)) %>
+  <small>
+    <%= link_to("Add Item", new_project_item_path(@project)) %>
+  </small>
+</h3>
+
+<form action="<%=items_batch_update_path%>" method="POST">
+<table class="table table-striped table-bordered table-hover  ">
+  <tr>
+    <td class='span1'> ID
+    </td>
+    <td> Item
+    </td>
+    <td class='span1'> Completed
+    </td>
+  </tr>
+  <% @project.items.each do |item| %>
+  <tr>
+    <td> <%= item.id %>
+    </td>
+    <td>
+          <%= link_to(item.title, project_item_path(@project, item)) %>
+            <a class="accordion-toggle btn btn-mini pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= item.id %>">
+              description
+            </a>
+          <div id="collapse<%= item.id %>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <%= simple_format(item.desc) %>
+            </div>
+          </div>
+
+    </td>
+    <td style='text-align: center;' onclick='$("#is_complete_<%=item.id%>").prop("checked", !$("#is_complete_<%=item.id%>").prop("checked"));'>
+      <%= hidden_field_tag("items[#{item.id}][is_complete]", false ) %>
+      <%=
+      check_box_tag(
+        "items[#{item.id}][is_complete]",
+        true,
+        item.completed?,
+        id: "is_complete_#{item.id}"
+      )
+      %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<input type='submit' class='pull-right btn btn-info' value='Update'>
+
+</form>

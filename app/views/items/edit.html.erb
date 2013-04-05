@@ -1,0 +1,5 @@
+<%= breadcrumb_helper([["Projects", projects_path], [@project.title, project_path(@project)], ["Items", project_items_path(@project)], [@item.title, project_item_path(@project, @item)], ["Edit", nil]]) %>
+<legend>
+  <h1>Edit Item</h1>
+</legend>
+<%= render :partial => "form" %>

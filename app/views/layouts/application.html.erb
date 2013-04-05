@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ToDo</title>
+  <title>TodoApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class='container-fluid'>
 
-<%= yield %>
-
+    <div class='well' style='margin-top:10px;'>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <a class="brand" href="/">TodoApp</a>
+          <ul class="nav">
+            <li><a href="<%=projects_path%>">Projects</a></li>
+            <li><a href="<%=teams_path%>">Teams</a></li>
+            <li><a href="<%=users_path%>">Users</a></li>
+          </ul>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

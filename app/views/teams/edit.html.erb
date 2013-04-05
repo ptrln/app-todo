@@ -1,0 +1,5 @@
+<%= breadcrumb_helper([["Teams", teams_path], [@team.name, team_path(@team)], ["Edit", nil]]) %>
+<legend>
+  <h1>Edit Team</h1>
+</legend>
+<%= render :partial => "form" %>

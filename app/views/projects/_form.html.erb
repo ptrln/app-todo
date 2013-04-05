@@ -1,0 +1,26 @@
+<%= form_for(@project, :html => {class: "form-horizontal"}) do |f| %>
+<div class="control-group <%= "error" unless @project.errors[:title].empty? %>">
+  <%= f.label :title, class: "control-label" %>
+  <div class="controls">
+  <%= f.text_field :title %>
+  <span class="help-inline"><%= @project.errors[:title].join(", ") %></span>
+  </div>
+</div>
+<div class="control-group">
+<%= f.label :team, class: "control-label" %>
+  <div class="controls">
+    <%= f.collection_select(:team_id, @teams, :id, :name) %>
+  </div>
+</div>
+<div class="control-group">
+<%= f.label :desc, "Description", class: "control-label" %>
+  <div class="controls">
+    <%= f.text_area :desc, class: "span8", rows: 5 %>
+  </div>
+</div>
+<div class="control-group">
+  <div class="controls">
+    <%= f.submit :class => "btn" %>
+  </div>
+</div>
+<% end %>

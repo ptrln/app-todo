@@ -1,0 +1,5 @@
+<%= breadcrumb_helper([["Users", users_path], [@user.name, user_path(@user)], ["Edit", nil]]) %>
+<legend>
+  <h1>Edit User</h1>
+</legend>
+<%= render :partial => "form" %>

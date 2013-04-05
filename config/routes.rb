@@ -1,4 +1,20 @@
 ToDo::Application.routes.draw do
+
+  match '/items/batch_update' => 'items#batch_update'
+
+  resources :projects do
+    resources :items
+  end
+
+  resources :teams do
+    resources :projects, :only => [:new]
+    resources :users, :only => [:new]
+  end
+
+  resources :users
+
+  root to: "dashboard#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

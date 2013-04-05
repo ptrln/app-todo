@@ -1,0 +1,26 @@
+<%= breadcrumb_helper([["Projects", projects_path], [@project.title, project_path(@project)], ["Items", project_items_path(@project)], [@item.title, nil]]) %>
+<legend>
+  <h1>
+    <%= @item.title %>
+    <%= complete_label(@item.completed?) %>
+    <small>
+      <%= link_to("Edit", edit_project_item_path(@project, @item))%>
+    </small>
+  </h1>
+
+  <small class='pull-right'>Item <%= @item.project.items.index(@item) + 1 %> of <%= @item.project.items.count %> in Project <%= link_to(@item.project.title, project_path(@item.project)) %></small>
+</legend>
+
+<%= form_for([@project,@item], html: {style: "display: inline"}) do |f| %>
+<%= complete_hidden_tag(@item.completed?) %>
+<%= complete_button(@item.completed?, f) %>
+<% end %>
+<h3>Description</h3>
+<blockquote>
+  <p>
+    <%= simple_format(@item.desc) %>
+    <%= "None" if @item.desc.nil? %>
+  </p>
+</blockquote>
+
+

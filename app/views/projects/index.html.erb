@@ -1,0 +1,16 @@
+<%= breadcrumb_helper([["Projects", nil]]) %>
+<legend>
+  <h1>
+    Projects
+    <small>
+      <%= link_to("Create new project", new_project_path) %>
+    </small>
+  </h1>
+</legend>
+<% @projects.each do |project| %>
+<p>
+
+<%= link_to(project.title, project_path(project)) %>
+</p>
+<% end %>
+

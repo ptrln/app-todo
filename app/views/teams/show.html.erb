@@ -1,0 +1,39 @@
+<%= breadcrumb_helper([["Teams", teams_path], [@team.name, nil]]) %>
+<legend>
+  <h1>
+    Team <%= @team.name %>
+    <small>
+      <%= link_to("Edit", edit_team_path(@team))%>
+    </small>
+  </h1>
+</legend>
+<h2>
+  Members
+  <small>
+    <%= link_to("Add member", new_team_user_url(@team)) %>
+  </small>
+</h2>
+<ol>
+<% @team.members.each do |member| %>
+
+<li>
+  <%= link_to(member.name, user_path(member)) %>
+</li>
+<% end %>
+</ol>
+<h2>
+  Projects
+  <small>
+    <%= link_to("Add Project", new_team_project_path(@team)) %>
+  </small>
+</h2>
+<ul>
+<% @team.projects.each do |project| %>
+
+<li>
+  <%= link_to(project.title, project_path(project)) %>
+</li>
+
+<% end %>
+</ul>
+

@@ -1,0 +1,22 @@
+<%= breadcrumb_helper([["Projects", projects_path], [@project.title, project_path(@project)], ["Items", nil]]) %>
+<legend>
+  <h1>Items
+    <small>
+      <%= link_to("Add Item", new_project_item_path(@project)) %>
+    </small>
+  </h1>
+</legend>
+<ol>
+<% @items.each do |item| %>
+<li>
+<p>
+<%= link_to(item.title, project_item_path(@project, item)) %>
+<%= complete_label(item.completed?) %>
+</p>
+<blockquote>
+  <p><%= simple_format(item.desc) %></p>
+</blockquote>
+</li>
+<% end %>
+</ol>
+
