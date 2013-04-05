@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405170159) do
+ActiveRecord::Schema.define(:version => 20130405171033) do
 
   create_table "items", :force => true do |t|
-    t.string   "title",       :null => false
+    t.string   "title",                          :null => false
     t.text     "desc"
-    t.boolean  "is_complete", :null => false
-    t.integer  "project_id",  :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "is_complete", :default => false, :null => false
+    t.integer  "project_id",                     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "projects", :force => true do |t|
