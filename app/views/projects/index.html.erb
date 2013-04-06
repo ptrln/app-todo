@@ -8,9 +8,10 @@
   </h1>
 </legend>
 <% @projects.each do |project| %>
-<p>
+<h4>
 
 <%= link_to(project.title, project_path(project)) %>
-</p>
+<%= complete_label(project.completed?) %>
+</h4>
 <% end %>
 

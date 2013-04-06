@@ -8,7 +8,8 @@
     </small>
   </h1>
 
-  <small class='pull-right'><%= link_to(@project.team.name, team_path(@project.team)) %></small>
+  <small class='pull-right'><%= link_to(@project.team.name,
+    team_path(@project.team)) %></small>
 </legend>
 <h3>
   <%= link_to("Items", project_items_path(@project)) %>
@@ -32,18 +33,23 @@
     <td> <%= item.id %>
     </td>
     <td>
-          <%= link_to(item.title, project_item_path(@project, item)) %>
-            <a class="accordion-toggle btn btn-mini pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= item.id %>">
-              description
-            </a>
-          <div id="collapse<%= item.id %>" class="accordion-body collapse">
-            <div class="accordion-inner">
-              <%= simple_format(item.desc) %>
-            </div>
+      <%= link_to(item.title, project_item_path(@project, item)) %>
+      <% if item.desc %>
+        <a class="accordion-toggle btn btn-mini pull-right"
+          data-toggle="collapse" data-parent="#accordion2"
+          href="#collapse<%= item.id %>">
+          description
+        </a>
+        <div id="collapse<%= item.id %>" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <%= simple_format(item.desc) %>
           </div>
-
+        </div>
+      <% end %>
     </td>
-    <td style='text-align: center;' onclick='$("#is_complete_<%=item.id%>").prop("checked", !$("#is_complete_<%=item.id%>").prop("checked"));'>
+    <td style='text-align: center;'
+      onclick='if (event.target.tagName != "INPUT") $("#is_complete_<%=item.id%>").prop("checked",
+      !$("#is_complete_<%=item.id%>").prop("checked"));'>
       <%= hidden_field_tag("items[#{item.id}][is_complete]", false ) %>
       <%=
       check_box_tag(
@@ -58,5 +64,4 @@
   <% end %>
 </table>
 <input type='submit' class='pull-right btn btn-info' value='Update'>
-
 </form>
