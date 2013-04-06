@@ -1,7 +1,7 @@
 <%= breadcrumb_helper([["Teams", teams_path], [@team.name, nil]]) %>
 <legend>
   <h1>
-    Team <%= @team.name %>
+    Team "<%= @team.name %>"
     <small>
       <%= link_to("Edit", edit_team_path(@team))%>
     </small>

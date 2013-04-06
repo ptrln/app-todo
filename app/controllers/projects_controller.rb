@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = case params[:order]
+    when 'a-z' then Project.order("title")
+    when 'z-a' then Project.order("title DESC")
+    when 'newest' then Project.order("created_at DESC")
+    when 'oldest' then  Project.order("created_at ASC")
+    else Project
+    end
+    @projects = @projects.all
   end
 
   def show

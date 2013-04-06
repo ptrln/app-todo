@@ -1,6 +1,13 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = case params[:order]
+    when 'a-z' then Team.order("name")
+    when 'z-a' then Team.order("name DESC")
+    when 'newest' then Team.order("created_at DESC")
+    when 'oldest' then  Team.order("created_at ASC")
+    else Team
+    end
+    @teams = @teams.all
   end
 
   def show

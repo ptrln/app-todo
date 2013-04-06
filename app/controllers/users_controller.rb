@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = case params[:order]
+    when 'a-z' then User.order("name")
+    when 'z-a' then User.order("name DESC")
+    when 'newest' then User.order("created_at DESC")
+    when 'oldest' then  User.order("created_at ASC")
+    else User
+    end
+    @users = @users.all
   end
 
   def show

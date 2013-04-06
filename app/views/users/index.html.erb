@@ -4,12 +4,21 @@
     Users
     <small>
       <%= link_to("Create new user", new_user_path) %>
+      <br>
+      Order by
+      <%= link_to("name (a-z)", {:order => "a-z"}) %>
+      /
+      <%= link_to("name (z-a)", {:order => "z-a"}) %>
+      /
+      <%= link_to("newest first", {:order => "newest"}) %>
+      /
+      <%= link_to("oldest first", {:order => "oldest"}) %>
     </small>
   </h1>
 </legend>
 <% @users.each do |user| %>
-<p>
+<h4>
 <%= link_to(user.name, user_path(user)) %>
-</p>
+</h4>
 <% end %>
 

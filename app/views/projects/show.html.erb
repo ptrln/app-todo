@@ -1,7 +1,7 @@
 <%= breadcrumb_helper([["Projects", projects_path], [@project.title, nil]]) %>
 <legend>
   <h1>
-    Project: <%= @project.title %>
+    Project "<%= @project.title %>"
     <%= complete_label(@project.completed?) %>
     <small>
       <%= link_to("Edit", edit_project_path(@project))%>

@@ -9,10 +9,10 @@
 <ol>
 <% @items.each do |item| %>
 <li>
-<p>
+<h4>
 <%= link_to(item.title, project_item_path(@project, item)) %>
 <%= complete_label(item.completed?) %>
-</p>
+</h4>
 <blockquote>
   <p><%= simple_format(item.desc) %></p>
 </blockquote>

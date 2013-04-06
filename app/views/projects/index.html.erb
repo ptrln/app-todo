@@ -4,6 +4,15 @@
     Projects
     <small>
       <%= link_to("Create new project", new_project_path) %>
+      <br>
+      Order by
+      <%= link_to("title (a-z)", {:order => "a-z"}) %>
+      /
+      <%= link_to("title (z-a)", {:order => "z-a"}) %>
+      /
+      <%= link_to("newest first", {:order => "newest"}) %>
+      /
+      <%= link_to("oldest first", {:order => "oldest"}) %>
     </small>
   </h1>
 </legend>

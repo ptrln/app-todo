@@ -4,12 +4,21 @@
     Teams
     <small>
       <%= link_to("Create new team", new_team_path) %>
+      <br>
+      Order by
+      <%= link_to("name (a-z)", {:order => "a-z"}) %>
+      /
+      <%= link_to("name (z-a)", {:order => "z-a"}) %>
+      /
+      <%= link_to("newest first", {:order => "newest"}) %>
+      /
+      <%= link_to("oldest first", {:order => "oldest"}) %>
     </small>
   </h1>
 </legend>
 <% @teams.each do |team| %>
-<p>
+<h4>
 <%= link_to(team.name, team_path(team)) %>
-</p>
+</h4>
 <% end %>
 
