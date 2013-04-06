@@ -6,6 +6,6 @@ class Project < ActiveRecord::Base
   validates :team, :title, presence: true
 
   def completed?
-    items.all?(&:completed?)
+    !items.empty? && items.all?(&:completed?)
   end
 end
