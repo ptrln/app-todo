@@ -34,7 +34,7 @@
     </td>
     <td>
       <%= link_to(item.title, project_item_path(@project, item)) %>
-      <% if item.desc %>
+      <% if item.desc && !item.desc.chomp.strip.empty? %>
         <a class="accordion-toggle btn btn-mini pull-right"
           data-toggle="collapse" data-parent="#accordion2"
           href="#collapse<%= item.id %>">
